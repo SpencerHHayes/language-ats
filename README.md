@@ -11,7 +11,7 @@ Package Created by [Spencer Hayes](https://www.github.com/SpencerHHayes)
 apm install language-ats
 ```
 
-* Install via GitHub. Run the fallowing from your terminal:
+* Install via GitHub. Run the following from your terminal:
 ```
 git clone https://github.com/SpencerHHayes/language-ats
 apm link language-ats
