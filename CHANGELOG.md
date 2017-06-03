@@ -1,3 +1,6 @@
+# Patch 0.1.2
+* Documentation Typos Fixed
+	
 # Patch 0.1.1
 * Unkept Files Cleaned	
 	
