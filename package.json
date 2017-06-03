@@ -1,14 +1,12 @@
 {
   "name": "language-ats",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "ATS Language Support For The Atom Text Editor",
-  "keywords": [
-  ],
+  "keywords": [],
   "repository": "https://github.com/SpencerHHayes/language-ats",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
