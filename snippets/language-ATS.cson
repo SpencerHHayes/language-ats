@@ -1,0 +1,29 @@
+'.source.ats':
+  'let, in, end':
+    'prefix': 'let'
+    'body': """
+      let
+      $1
+      in
+
+      end
+    """
+  'case+':
+    'prefix': 'c+'
+    'body': """
+      case+ $1 of
+        |
+        |
+    """
+  'case-':
+    'prefix': 'c-'
+    'body': """
+      case- $1 of
+        |
+    """
+  'case':
+    'prefix': 'cs'
+    'body': """
+      case $1 of
+        |
+    """

@@ -1,0 +1,228 @@
+scopeName: "source.ats"
+name: "ATS"
+fileTypes: [
+  "dats"
+  "sats"
+  "hats"
+]
+patterns: [
+    {
+    include: "#functional"
+    }
+    {
+    include: "#general"
+    }
+    {
+    include: "#block"
+    }
+    {
+    include: "#char"
+    }
+    {
+    include: "#c_block"
+    }
+    {
+    include: "#secondary_block"
+    }
+    {
+    include: "#single_comment"
+    }
+    {
+    include: "#lng_comment"
+    }
+    {
+    include: "#type_specify"
+    }
+    {
+    include: "#outside_code"
+    }
+    {
+    include: "#boolean"
+    }
+    {
+    include: "#ident"
+    }
+    {
+    include: "#typed_specific"
+    }
+    {
+    include: "#num"
+    }
+    {
+    include: "#ops"
+    }
+    {
+    include: "#arrow"
+    }
+    {
+    include: "#brackets"
+    }
+    {
+    include: "#square"
+    }
+    {
+    include: "#recs"
+    }
+    {
+    include: "#str"
+    }
+    {
+    include: "#tuple"
+    }
+]
+
+repository:
+  functional:
+    begin: "\\b(?:fun|implement|overload|var)\\b"
+    beginCaptures:
+      "0":
+        name: "keyword"
+    end: "\\b[a-zA-Z][a-zA-Z0-9_']*\\b"
+    endCaptures:
+      "0":
+        name: "entity.name.function"
+    name: "meta.function-definition"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+
+  general:
+    match: "(\\#|\\$)(\\w+)|\\b(castfn|and|int|boolean|float|double|String|list0|andalso|assume|as|begin|break|case(\\+|-)?|class|continue|else|end|exception|extern|fix|fn|for|fun|if|implement|in|lam|let|local|method|object|of|op|or|orelse|overload|rec|staload|stavar|sta|struct|then|try|val(\\+|-)?|var|when|where|while|with)\\b"
+    name: "keyword"
+
+  block:
+    applyEndPatternLast: 1
+    begin: "(?<=where|=|^|then|else|\\$rec|\\$rec_t|\\$rec_vt)(?:\\s*)\\{"
+    end: "\\}"
+    name: "meta.block"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+
+  char:
+    match: "(')([^\\\\]{0,1}|\\\\(\\\\|[abefpnrtv'\"?]|[0-3]\\d{0,2}|[4-7]\\d?|x[a-fA-F0-9]{0,2}|u[a-fA-F0-9]{0,4}|U[a-fA-F0-9]{0,8}))(')"
+    name: "string.quoted.double"
+
+  c_block:
+    applyEndPatternLast: 1
+    begin: "/\\*"
+    end: "\\*/"
+    name: "comment.block"
+
+  secondary_block:
+    applyEndPatternLast: 1
+    begin: "\\(\\*"
+    end: "\\*\\)"
+    name: "comment.block"
+    patterns: [
+      {
+        include: "#comment_block_sml"
+      }
+    ]
+
+  single_comment:
+    match: "//.*$"
+    name: "comment.line.double-slash"
+
+  lng_comment:
+    applyEndPatternLast: 1
+    begin: "////"
+    end: ".\\z"
+    name: "comment.block"
+    patterns: [
+      {
+        match: ".*"
+      }
+    ]
+
+  type_specify:
+    begin: "\\b(abstype|abst@ype|abst0pe|datatype|datavtype|typedef)\\b"
+    beginCaptures:
+      "0":
+        name: "keyword"
+    end: "\\b[a-zA-Z][a-zA-Z0-9_']*\\b"
+    endCaptures:
+      "0":
+        name: "entity.name.type storage.type"
+    name: "meta.type-definition"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+
+  outside_code:
+    begin: "(%{)"
+    end: "(%})"
+    name: "meta"
+
+  boolean:
+    match: "\\b(?:false|true)\\b"
+    name: "constant.language.boolean"
+
+  ident:
+    match: "\\b[a-zA-Z][a-zA-Z0-9_']*\\b"
+    name: "identifier"
+
+  typed_specific:
+    match: "(\\#|\\$)(\\w+)|\\b(abstype|abst@ype|datatype|datasort|typedef)\\b"
+    name: "keyword"
+
+  num:
+    match: "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|~)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b"
+    name: "constant.numeric"
+
+  ops:
+    match: "!=|!|%|&&|&|\\*|\\+|-|-->|->|/|:=|<=|(?<=\\s)<|==>|=>|=|>=|>>|>|\\?|\\|\\||\\||~|\\[\\]"
+    name: "keyword.operator"
+
+  arrow:
+    begin: "(?<!\\s)<"
+    end: ">"
+    name: "support.type"
+
+  brackets:
+    begin: "\\{(?=[\\S])"
+    end: "\\}"
+    name: "support.type.quantifier.universal"
+
+  square:
+    begin: "\\[(?=[\\S])"
+    end: "\\]"
+    name: "support.type.quantifier.existential"
+
+  recs:
+    begin: "('|@)({)"
+    end: "(})"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
+
+  str:
+    begin: "(\")"
+    end: "(\")"
+    name: "string.quoted.double"
+    patterns: [
+      {
+        include: "#passed_str"
+      }
+    ]
+
+  passed_str:
+    match: "\\\\(\\\\|[abefnprtv'\"?]|[0-3]\\d{0,2}|[4-7]\\d?|x[a-fA-F0-9]{0,2}|u[a-fA-F0-9]{0,4}|U[a-fA-F0-9]{0,8})"
+    name: "constant.character.escape"
+
+  tuple:
+    begin: "('|@)\\("
+    end: "(\\))"
+    patterns: [
+      {
+        include: "$self"
+      }
+    ]
