@@ -1,6 +1,6 @@
 {
   "name": "language-ats",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ATS Language Support For The Atom Text Editor",
   "keywords": [],
   "repository": "https://github.com/SpencerHHayes/language-ats",
