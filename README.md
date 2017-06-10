@@ -5,6 +5,7 @@ This package adds ATS Support to the Atom Text Editor.
 Package Created by [Spencer Hayes](https://www.github.com/SpencerHHayes)
 # Installation
 ***
+A video of the three different methods of installation can be found [here](https://www.youtube.com/watch?v=PxVNUA6pVRw). The three methods are as follows: 
 * Install via Settings Menu in Atom. Go to Install -> Install Packages and Search "language-ats".
 * Install via Atom Package Manager (apm). Via terminal type:
 ```
