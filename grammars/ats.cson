@@ -73,7 +73,7 @@ patterns: [
 
 repository:
   functional:
-    begin: "\\b(?:fun|implement|overload|var)\\b"
+    begin: "\\b(?:fun|implement|overload|var|println)\\b"
     beginCaptures:
       "0":
         name: "keyword"
@@ -89,7 +89,7 @@ repository:
     ]
 
   general:
-    match: "(\\#|\\$)(\\w+)|\\b(castfn|and|int|boolean|float|double|String|list0|andalso|assume|as|begin|break|case(\\+|-)?|class|continue|else|end|exception|extern|fix|fn|for|fun|if|implement|in|lam|let|local|method|object|of|op|or|orelse|overload|rec|staload|stavar|sta|struct|then|try|val(\\+|-)?|var|when|where|while|with)\\b"
+    match: "(\\#|\\$)(\\w+)|\\b(castfn|and|int|boolean|float|main|double|String|list0|andalso|assume|as|begin|break|case|class|continue|else|end|exception|extern|fix|fn|for|fun|if|implement|in|lam|let|local|method|object|of|op|or|orelse|overload|rec|staload|stavar|sta|struct|then|try|val(\\+|-)?|var|when|where|while|with)\\b"
     name: "keyword"
 
   block:
